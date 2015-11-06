@@ -5,6 +5,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-linum-mode 1)
+(setq column-number-mode t)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; ripped from github.com/bbatsov/prelude
 (setq-default indent-tabs-mode nil) ; don't use tabs to indent
@@ -73,17 +76,6 @@
 
 (use-package plan9-theme)
 
-(use-package smartparens
-  :config
-  (require 'smartparens-config)
-  ;; (setq sp-base-key-bindings 'paredit)
-  ;; (setq sp-autoskip-closing-pair 'always)
-  ;; (setq sp-hybrid-kill-entire-symbol nil)
-  ;; (sp-use-paredit-bindings)
-  (show-smartparens-global-mode +1)
-  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode))
-
 (use-package helm
   :diminish helm-mode
   :bind (("M-x" . helm-M-x)
@@ -112,7 +104,7 @@
 (use-package company
   :config
   (setq company-tooltip-limit 15)
-  (setq company-idle-delay .1)
+  (setq company-idle-delay .25)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package flycheck
