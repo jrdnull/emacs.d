@@ -1,3 +1,2 @@
-(use-package git-gutter
-  :config
-  (global-git-gutter-mode t))
+(use-package git-gutter-fringe
+  :config (global-git-gutter-mode t))

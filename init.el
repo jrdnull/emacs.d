@@ -76,6 +76,12 @@
 
 (use-package plan9-theme)
 
+(use-package smart-mode-line
+  :config
+  (setq sml/no-confirm-load-theme t)
+  (setq sml/theme 'respectful)
+  (sml/setup))
+
 (use-package helm
   :diminish helm-mode
   :bind (("M-x" . helm-M-x)
@@ -145,20 +151,9 @@
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-;; Load all lisp files in ~/.emacs.d/init.d/
-(dolist (file (directory-files "~/.emacs.d/init.d" t "\.el$")) (load file))
+;; Setup custom to its own file
+(setq custom-file "~/.emacs.d/init.d/custom.el")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("dac794fc4bea9460be869c8aae37e977e6b99441577c2a5c2b095d2d8cc558fa" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Load all lisp files in ~/.emacs.d/init.d/
+(dolist (file (directory-files "~/.emacs.d/init.d" t "\.el$"))
+  (load file))
