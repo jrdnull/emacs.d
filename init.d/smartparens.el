@@ -6,5 +6,4 @@
   (setq sp-hybrid-kill-entire-symbol nil)
   (sp-use-paredit-bindings)
   (show-smartparens-global-mode +1)
-  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-  (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode))
+  (add-hook 'prog-mode-hook '(lambda () (smartparens-mode +1))))

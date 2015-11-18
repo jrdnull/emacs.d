@@ -63,7 +63,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -85,19 +85,19 @@
 (use-package helm
   :diminish helm-mode
   :bind (("M-x" . helm-M-x)
-	 ("M-y" . helm-show-kill-ring)
-	 ("C-x b" . helm-mini)
-	 ("C-x C-b" . helm-buffers-list)
-	 ("C-x C-f" . helm-find-files)
-	 ("C-x C-r" . helm-recentf)
-	 ("C-x c o" . helm-occur))
+         ("M-y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         ("C-x C-r" . helm-recentf)
+         ("C-x c o" . helm-occur))
   :init (progn
-	  (require 'helm-config)
-	  (helm-mode 1)
-	  (use-package helm-descbinds
-	    :bind (("C-h b" . helm-descbinds)
-		   ("C-h w" . helm-descbinds)))
-	  (use-package helm-ag)))
+          (require 'helm-config)
+          (helm-mode 1)
+          (use-package helm-descbinds
+            :bind (("C-h b" . helm-descbinds)
+                   ("C-h w" . helm-descbinds)))
+          (use-package helm-ag)))
 
 (use-package projectile
   :config
@@ -150,6 +150,11 @@
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
+
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+
+;; Cleanup whitespace on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")
