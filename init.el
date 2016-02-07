@@ -5,7 +5,9 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-linum-mode 1)
+(global-hl-line-mode +1)
 (setq column-number-mode t)
+(setq inhibit-startup-screen t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -21,6 +23,10 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
 
 ;; use shift + arrow keys to switch between visible buffers
 (require 'windmove)
@@ -43,23 +49,13 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*") ; ignore special buffers
 
-;; source - http://batsov.com/articles/2012/03/08/emacs-tip-number-5-save-buffers-automatically-on-buffer-or-window-switch/
-;; automatically save buffers associated with files on buffer switch
-;; and on windows switch
-(defadvice switch-to-buffer (before save-buffer-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice other-window (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-up (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-down (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-left (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice windmove-right (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
-(add-hook 'mouse-leave-buffer-hook
-          (lambda () (when buffer-file-name (save-buffer))))
+;; more useful frame title, that show either a file or a
+;; buffer name (if the buffer isn't visiting a file)
+;;-- bbatsov
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -73,6 +69,10 @@
     (package-initialize)))
 (require 'use-package)
 (setq use-package-always-ensure t) ; avoid using :ensure t for everything
+
+(use-package super-save
+  :config
+  (super-save-mode +1))
 
 (use-package plan9-theme)
 

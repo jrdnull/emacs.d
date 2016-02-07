@@ -3,8 +3,13 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        coffee-dedent-line-backspace
+        go-mode-insert-and-indent
         smarter-move-beginning-of-line
         sp-delete-char
+        yaml-electric-backspace
+        yaml-electric-dash-and-dot
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once

@@ -1,4 +1,8 @@
 (use-package go-mode
+  :bind (("C-c a" . go-test-current-project)
+         ("C-c m" . go-test-current-file)
+         ("C-c b" . go-run)
+         ("C-h f" . godoc-at-point))
   :init
   (use-package company-go)
   (use-package go-eldoc)
@@ -22,12 +26,12 @@
           (require 'golint))))
   :config
   (add-hook 'go-mode-hook
-	    '(lambda ()
-	       (progn
-		 ;; Prefer goimports to gofmt if installed
-		 (let ((goimports (executable-find "goimports")))
-		   (when goimports (setq gofmt-command goimports)))
-		 (add-hook 'before-save-hook 'gofmt-before-save nil t)
-		 (set (make-local-variable 'company-backends) '(company-go))
-		 (subword-mode +1) ; CamelCase aware editing operations
-		 (go-eldoc-setup)))))
+            '(lambda ()
+               (progn
+                 ;; Prefer goimports to gofmt if installed
+                 (let ((goimports (executable-find "goimports")))
+                   (when goimports (setq gofmt-command goimports)))
+                 (add-hook 'before-save-hook 'gofmt-before-save nil t)
+                 (set (make-local-variable 'company-backends) '(company-go))
+                 (subword-mode +1)
+                 (go-eldoc-setup)))))
