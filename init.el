@@ -70,6 +70,13 @@
 (require 'use-package)
 (setq use-package-always-ensure t) ; avoid using :ensure t for everything
 
+(use-package flyspell
+  :config
+  (setq ispell-program-name "aspell" ; use aspell instead of ispell
+        ispell-extra-args '("--sug-mode=ultra"))
+  (add-hook 'text-mode-hook #'flyspell-mode)
+  (add-hook 'prog-mode #'flyspell-prog-mode))
+
 (use-package super-save
   :config
   (super-save-mode +1))
@@ -152,6 +159,19 @@
                 'smarter-move-beginning-of-line)
 
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+
+(bind-key "C-x C-k" 'kill-this-buffer)
+
+;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
 
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
