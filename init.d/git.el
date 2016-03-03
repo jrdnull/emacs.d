@@ -1,2 +1,2 @@
-(use-package git-gutter-fringe
-  :config (global-git-gutter-mode t))
+(use-package diff-hl
+  :config (global-diff-hl-mode +1))

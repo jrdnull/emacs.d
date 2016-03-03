@@ -81,8 +81,6 @@
   :config
   (super-save-mode +1))
 
-(use-package plan9-theme)
-
 (use-package smart-mode-line
   :config
   (setq sml/no-confirm-load-theme t)
@@ -173,8 +171,16 @@
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
+(use-package rainbow-mode)
+
+(setq linum-format " %d")
+
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Load all lisp files in ~/.emacs.d/init.d/
+(dolist (file (directory-files "~/.emacs.d/themes" t "\.el$"))
+  (load file))
 
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")
