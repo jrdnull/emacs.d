@@ -173,7 +173,8 @@
 
 (use-package rainbow-mode)
 
-(setq linum-format " %d")
+(setq linum-format " %d ")
+(set-fringe-mode '(nil . 0))
 
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
