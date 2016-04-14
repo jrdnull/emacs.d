@@ -4,7 +4,9 @@
 (setq mc/cmds-to-run-for-all
       '(
         coffee-dedent-line-backspace
+        electric-newline-and-maybe-indent
         go-mode-insert-and-indent
+        kill-region
         smarter-move-beginning-of-line
         sp-delete-char
         yaml-electric-backspace
@@ -14,4 +16,5 @@
 
 (setq mc/cmds-to-run-once
       '(
+        mac-mwheel-scroll
         ))

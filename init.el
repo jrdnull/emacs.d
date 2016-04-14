@@ -128,6 +128,10 @@
     (exec-path-from-shell-initialize)
     (exec-path-from-shell-copy-env "GOPATH")))
 
+(use-package expand-region
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
 ;; source: http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -175,6 +179,8 @@
 
 (setq linum-format " %d ")
 (set-fringe-mode '(nil . 0))
+
+(setq tramp-default-method "ssh")
 
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)

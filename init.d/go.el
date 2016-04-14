@@ -6,24 +6,25 @@
   :init
   (use-package company-go)
   (use-package go-eldoc)
-  (use-package go-projectile)
   (use-package gotest)
   (let ((gorename-file-path
-         (concat
-          (getenv "GOPATH")
-          "/src/golang.org/x/tools/refactor/rename/rename.el")))
+         (concat (getenv "GOPATH") "/src/golang.org/x/tools/refactor/rename/go-rename.el")))
     (if (file-exists-p gorename-file-path)
         (progn
           (load-file gorename-file-path)
           (require 'go-rename))))
   (let ((golint-file-path
-         (concat
-          (getenv "GOPATH")
-          "/src/github.com/golang/lint/misc/emacs/golint.el")))
+         (concat (getenv "GOPATH") "/src/github.com/golang/lint/misc/emacs/golint.el")))
     (if (file-exists-p golint-file-path)
         (progn
           (load-file golint-file-path)
           (require 'golint))))
+  (let ((go-oracle-file-path
+         (concat (getenv "GOPATH") "/src/golang.org/x/tools/cmd/oracle/oracle.el")))
+    (if (file-exists-p go-oracle-file-path)
+        (progn
+          (load-file go-oracle-file-path)
+          (require 'go-oracle))))
   :config
   (add-hook 'go-mode-hook
             '(lambda ()
