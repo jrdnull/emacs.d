@@ -185,10 +185,6 @@
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
-;; Load all lisp files in ~/.emacs.d/init.d/
-(dolist (file (directory-files "~/.emacs.d/themes" t "\.el$"))
-  (load file))
-
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")
 
