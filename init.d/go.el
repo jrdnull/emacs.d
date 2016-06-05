@@ -36,3 +36,28 @@
                  (set (make-local-variable 'company-backends) '(company-go))
                  (subword-mode +1)
                  (go-eldoc-setup)))))
+
+(use-package go-dlv)
+
+(defun go-open (package)
+  "Open a package in your $GOPATH"
+  (interactive
+   (list
+    (completing-read "Package: " (directory-folders-at-depth (concat (getenv "GOPATH") "/src") 3))))
+  (find-file package))
+
+(defun directory-folders-at-depth (directory depth)
+  "List sub-directories at DEPTH in DIRECTORY"
+  (let* ((folder-list '())
+         (current-directory-list (directory-files directory t)))
+    (while current-directory-list
+      (let ((f (car current-directory-list)))
+        (if (and
+             (file-directory-p f)
+             (not (string-equal ".." (substring f -2)))
+             (not (string-equal "." (substring f -1))))
+            (if (= depth 1)
+                (setq folder-list (cons f folder-list))
+              (setq folder-list (append folder-list (directory-folders-at-depth f (- depth 1))))))
+        (setq current-directory-list (cdr current-directory-list))))
+    folder-list))

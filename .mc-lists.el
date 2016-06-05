@@ -7,6 +7,7 @@
         electric-newline-and-maybe-indent
         go-mode-insert-and-indent
         kill-region
+        org-delete-char
         smarter-move-beginning-of-line
         sp-delete-char
         yaml-electric-backspace

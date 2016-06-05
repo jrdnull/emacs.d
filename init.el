@@ -177,10 +177,17 @@
 
 (use-package rainbow-mode)
 
-(setq linum-format " %d ")
+;(setq linum-format " %d ")
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string (count-lines (point-min) (point-max)))))
+         (linum-format (concat "%" (number-to-string w) "d ")))
+    ad-do-it))
+
+
 (set-fringe-mode '(nil . 0))
 
 (setq tramp-default-method "ssh")
+
 
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
