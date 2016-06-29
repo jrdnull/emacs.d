@@ -9,3 +9,8 @@
   "Triggers rebuild on next request of Teamwork Desk"
   (interactive)
   (url-retrieve "http://sunbeam.teamwork.dev:9999" (lambda (status) (message "OK"))))
+
+(defun tw-reload-echo ()
+  "Triggers rebuild on next request of Teamwork Desk (echo)"
+  (interactive)
+  (async-shell-command "nc sunbeam.teamwork.dev 9112"))

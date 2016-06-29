@@ -74,8 +74,8 @@
   :config
   (setq ispell-program-name "aspell" ; use aspell instead of ispell
         ispell-extra-args '("--sug-mode=ultra"))
-  (add-hook 'text-mode-hook #'flyspell-mode)
-  (add-hook 'prog-mode #'flyspell-prog-mode))
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode))
 
 (use-package super-save
   :config
@@ -84,9 +84,10 @@
 (use-package smart-mode-line
   :config
   (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'respectful)
+;  (setq sml/theme 'respectful)
   (sml/setup))
 
+(use-package ag)
 (use-package helm
   :diminish helm-mode
   :bind (("M-x" . helm-M-x)
@@ -109,7 +110,7 @@
   (projectile-global-mode)
   (use-package helm-projectile
     :config
-    (setq projectile-completion-system 'heml)
+    (setq projectile-completion-system 'helm)
     (helm-projectile-on)))
 
 (use-package company
@@ -131,6 +132,10 @@
 (use-package expand-region
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
+
+(use-package zenburn-theme
+  :config
+  (load-theme 'zenburn t))
 
 ;; source: http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun smarter-move-beginning-of-line (arg)
@@ -177,12 +182,7 @@
 
 (use-package rainbow-mode)
 
-;(setq linum-format " %d ")
-(defadvice linum-update-window (around linum-dynamic activate)
-  (let* ((w (length (number-to-string (count-lines (point-min) (point-max)))))
-         (linum-format (concat "%" (number-to-string w) "d ")))
-    ad-do-it))
-
+(setq linum-format " %d ")
 
 (set-fringe-mode '(nil . 0))
 

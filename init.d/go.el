@@ -7,6 +7,7 @@
   (use-package company-go)
   (use-package go-eldoc)
   (use-package gotest)
+  (use-package go-impl)
   (let ((gorename-file-path
          (concat (getenv "GOPATH") "/src/golang.org/x/tools/refactor/rename/go-rename.el")))
     (if (file-exists-p gorename-file-path)
