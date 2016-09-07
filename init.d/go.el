@@ -20,12 +20,12 @@
         (progn
           (load-file golint-file-path)
           (require 'golint))))
-  (let ((go-oracle-file-path
-         (concat (getenv "GOPATH") "/src/golang.org/x/tools/cmd/oracle/oracle.el")))
-    (if (file-exists-p go-oracle-file-path)
+  (let ((go-guru-file-path
+         (concat (getenv "GOPATH") "/src/golang.org/x/tools/cmd/guru/go-guru.el")))
+    (if (file-exists-p go-guru-file-path)
         (progn
-          (load-file go-oracle-file-path)
-          (require 'go-oracle))))
+          (load-file go-guru-file-path)
+          (require 'go-guru))))
   :config
   (add-hook 'go-mode-hook
             '(lambda ()
@@ -36,7 +36,8 @@
                  (add-hook 'before-save-hook 'gofmt-before-save nil t)
                  (set (make-local-variable 'company-backends) '(company-go))
                  (subword-mode +1)
-                 (go-eldoc-setup)))))
+                 (go-eldoc-setup))))
+  (require 'gotests))
 
 (use-package go-dlv)
 

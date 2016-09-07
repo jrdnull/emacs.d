@@ -195,6 +195,8 @@
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
 ;; Load all lisp files in ~/.emacs.d/init.d/
 (dolist (file (directory-files "~/.emacs.d/init.d" t "\.el$"))
   (load file))

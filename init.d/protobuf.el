@@ -1,1 +1,1 @@
-(use-package protobuf-mode)
+;(use-package protobuf-mode) broken on 25
