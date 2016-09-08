@@ -1,8 +1,9 @@
 (use-package go-mode
-  :bind (("C-c a" . go-test-current-project)
-         ("C-c m" . go-test-current-file)
-         ("C-c b" . go-run)
-         ("C-h f" . godoc-at-point))
+  :bind (:map go-mode-map
+              ("C-c a" . go-test-current-project)
+              ("C-c m" . go-test-current-file)
+              ("C-c b" . go-run)
+              ("C-h f" . godoc-at-point))
   :init
   (use-package company-go)
   (use-package go-eldoc)
