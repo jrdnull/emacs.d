@@ -14,6 +14,7 @@
 ;; ripped from github.com/bbatsov/prelude
 (setq-default indent-tabs-mode nil) ; don't use tabs to indent
 (setq-default tab-width 8)          ; but maintain correct appearance
+(setq-default fill-column 80)
 
 (setq require-final-newline t) ; new line EOF
 (delete-selection-mode t) ; overwrite selection
