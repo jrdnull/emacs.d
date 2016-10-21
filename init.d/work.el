@@ -14,3 +14,8 @@
   "Triggers rebuild on next request of Teamwork Desk (echo)"
   (interactive)
   (async-shell-command "nc sunbeam.teamwork.dev 9112"))
+
+(defun tw-reload-docs ()
+  "Triggers rebuild on next request of Teamwork Helpdocs"
+  (interactive)
+  (async-shell-command "nc sunbeam.teamwork.dev 9113"))

@@ -11,6 +11,11 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq message-log-max 5000)
+
+(when (display-graphic-p)
+  (setq confirm-kill-emacs 'y-or-n-p))
+
 ;; ripped from github.com/bbatsov/prelude
 (setq-default indent-tabs-mode nil) ; don't use tabs to indent
 (setq-default tab-width 8)          ; but maintain correct appearance

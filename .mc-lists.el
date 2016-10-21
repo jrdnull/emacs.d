@@ -10,6 +10,7 @@
         org-delete-char
         smarter-move-beginning-of-line
         sp-delete-char
+        sp-forward-slurp-sexp
         yaml-electric-backspace
         yaml-electric-dash-and-dot
         yas-expand
@@ -18,4 +19,5 @@
 (setq mc/cmds-to-run-once
       '(
         mac-mwheel-scroll
+        magit-status
         ))

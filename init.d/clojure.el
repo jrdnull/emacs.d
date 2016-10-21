@@ -4,4 +4,4 @@
   (subword-mode +1)
 )
 
-;; (use-package cider)
+(use-package cider)
