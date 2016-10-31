@@ -9,29 +9,13 @@
   (use-package go-eldoc)
   (use-package gotest)
   (use-package go-impl)
-  (let ((gorename-file-path
-         (concat (getenv "GOPATH") "/src/golang.org/x/tools/refactor/rename/go-rename.el")))
-    (if (file-exists-p gorename-file-path)
-        (progn
-          (load-file gorename-file-path)
-          (require 'go-rename))))
-  (let ((golint-file-path
-         (concat (getenv "GOPATH") "/src/github.com/golang/lint/misc/emacs/golint.el")))
-    (if (file-exists-p golint-file-path)
-        (progn
-          (load-file golint-file-path)
-          (require 'golint))))
-  (let ((go-guru-file-path
-         (concat (getenv "GOPATH") "/src/golang.org/x/tools/cmd/guru/go-guru.el")))
-    (if (file-exists-p go-guru-file-path)
-        (progn
-          (load-file go-guru-file-path)
-          (require 'go-guru))))
+  (use-package go-dlv)
+  (use-package go-rename)
+  (use-package go-guru)
   :config
   (add-hook 'go-mode-hook
             '(lambda ()
                (progn
-                 ;; Prefer goimports to gofmt if installed
                  (let ((goimports (executable-find "goimports")))
                    (when goimports (setq gofmt-command goimports)))
                  (add-hook 'before-save-hook 'gofmt-before-save nil t)
@@ -39,8 +23,6 @@
                  (subword-mode +1)
                  (go-eldoc-setup))))
   (require 'gotests))
-
-(use-package go-dlv)
 
 (defun go-open (package)
   "Open a package in your $GOPATH"

@@ -195,6 +195,13 @@
 (setq tramp-default-method "ssh")
 
 
+;; Set default font
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 110
+                    :weight 'normal
+                    :width 'normal)
+
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
