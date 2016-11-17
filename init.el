@@ -90,7 +90,7 @@
 (use-package smart-mode-line
   :config
   (setq sml/no-confirm-load-theme t)
-;  (setq sml/theme 'respectful)
+  (setq sml/theme 'light)
   (sml/setup))
 
 (use-package ag)
@@ -139,9 +139,13 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
-(use-package zenburn-theme
+;; (use-package zenburn-theme
+;;   :config
+;;   (load-theme 'zenburn t))
+
+(use-package leuven-theme
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'leuven t))
 
 ;; source: http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun smarter-move-beginning-of-line (arg)
@@ -197,7 +201,7 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
+                    :family "Go Mono"
                     :height 110
                     :weight 'normal
                     :width 'normal)
