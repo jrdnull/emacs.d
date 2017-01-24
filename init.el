@@ -90,7 +90,7 @@
 (use-package smart-mode-line
   :config
   (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'light)
+  (setq sml/theme 'respectful)
   (sml/setup))
 
 (use-package ag)
@@ -139,13 +139,13 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
-;; (use-package zenburn-theme
-;;   :config
-;;   (load-theme 'zenburn t))
-
-(use-package leuven-theme
+(use-package zenburn-theme
   :config
-  (load-theme 'leuven t))
+  (load-theme 'zenburn t))
+
+;; (use-package leuven-theme
+;;   :config
+;;   (load-theme 'leuven t))
 
 ;; source: http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun smarter-move-beginning-of-line (arg)
@@ -176,6 +176,8 @@
                 'smarter-move-beginning-of-line)
 
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+
+(global-unset-key (kbd "C-z"))
 
 (bind-key "C-x C-k" 'kill-this-buffer)
 
@@ -208,6 +210,19 @@
 
 ;; Cleanup whitespace on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
+(defun sudo-edit (&optional arg)
+  "Edit currently visited file as root.
+
+With a prefix ARG prompt for a file to visit.
+Will also prompt for a file to visit if current
+buffer is not visiting a file."
+  (interactive "P")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:"
+                         (ido-read-file-name "Find file(as root): ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")

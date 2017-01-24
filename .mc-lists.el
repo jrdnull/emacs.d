@@ -22,4 +22,6 @@
       '(
         mac-mwheel-scroll
         magit-status
+        sgml-maybe-name-self
+        sp-remove-active-pair-overlay
         ))
