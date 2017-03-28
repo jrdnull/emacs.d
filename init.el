@@ -47,7 +47,7 @@
 (global-auto-revert-mode t)
 
 ;; smart tab behavior - indent or complete
-(setq tab-always-indent 'complete)
+(setq tab-always-indent nil)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -223,6 +223,9 @@ buffer is not visiting a file."
       (find-file (concat "/sudo:root@localhost:"
                          (ido-read-file-name "Find file(as root): ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(exec-path-from-shell-initialize)
+(setq help-window-select t)
 
 ;; Setup custom to its own file
 (setq custom-file "~/.emacs.d/init.d/custom.el")

@@ -11,7 +11,7 @@
     (gud-mode c-mode c++-mode fortran-mode python-mode go-mode)))
  '(package-selected-packages
    (quote
-    (god-mode graphviz-dot-mode go-guru go-rename magit go-mode csv-mode cider color-theme-modern rainbow-delimiters request helm-dash gorepl-mode zenburn-theme yasnippet yaml-mode use-package super-save smartparens smart-mode-line restclient rainbow-mode protobuf-mode plan9-theme perspective persp-mode org-sync multiple-cursors multi-term magit-gh-pulls lua-mode less-css-mode helm-projectile helm-descbinds helm-ag gotest go-impl go-eldoc go-dlv flycheck expand-region exec-path-from-shell diff-hl company-go coffee-mode clojure-mode apropospriate-theme ag ace-window))))
+    (add-node-modules-path js-doc widget-mvc company-tern json-mode js2-mode web-mode php-mode persp-projectile flymake-json god-mode graphviz-dot-mode go-guru go-rename magit go-mode csv-mode cider color-theme-modern rainbow-delimiters request helm-dash gorepl-mode zenburn-theme yasnippet yaml-mode use-package super-save smartparens smart-mode-line restclient rainbow-mode protobuf-mode plan9-theme perspective persp-mode org-sync multiple-cursors multi-term magit-gh-pulls lua-mode less-css-mode helm-projectile helm-descbinds helm-ag gotest go-impl go-eldoc go-dlv flycheck expand-region exec-path-from-shell diff-hl company-go coffee-mode clojure-mode apropospriate-theme ag ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

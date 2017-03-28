@@ -9,7 +9,10 @@
         electric-newline-and-maybe-indent
         go-mode-insert-and-indent
         kill-region
+        org-beginning-of-line
+        org-cycle
         org-delete-char
+        org-self-insert-command
         smarter-move-beginning-of-line
         sp-delete-char
         sp-forward-slurp-sexp
@@ -20,6 +23,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        go-test-current-project
         mac-mwheel-scroll
         magit-status
         sgml-maybe-name-self
