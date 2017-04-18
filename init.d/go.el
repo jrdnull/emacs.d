@@ -24,6 +24,13 @@
                  (go-eldoc-setup))))
   (require 'gotests))
 
+(defun work-open (project)
+  "Open a folder for work"
+  (interactive
+   (list
+    (completing-read "Project: " (directory-folders-at-depth "/home/jrd/work/src" 1))))
+   (find-file project))
+
 (defun go-open (package)
   "Open a package in your $GOPATH"
   (interactive

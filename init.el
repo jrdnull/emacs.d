@@ -47,7 +47,7 @@
 (global-auto-revert-mode t)
 
 ;; smart tab behavior - indent or complete
-(setq tab-always-indent nil)
+(setq tab-always-indent t)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -142,6 +142,11 @@
 (use-package zenburn-theme
   :config
   (load-theme 'zenburn t))
+
+
+(use-package gruvbox-theme
+  :config
+  (load-theme 'gruvbox t))
 
 ;; (use-package leuven-theme
 ;;   :config
