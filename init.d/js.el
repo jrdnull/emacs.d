@@ -1,7 +1,7 @@
 (use-package json-mode)
 (use-package js2-mode
   :config
-  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js-mode))
   (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
   (unbind-key "M-j" js2-mode-map)
   (use-package add-node-modules-path
