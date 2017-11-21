@@ -24,6 +24,10 @@
 (setq require-final-newline t) ; new line EOF
 (delete-selection-mode t) ; overwrite selection
 
+;; Font size
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
