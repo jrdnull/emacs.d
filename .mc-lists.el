@@ -7,7 +7,9 @@
         c-electric-semi&comma
         coffee-dedent-line-backspace
         electric-newline-and-maybe-indent
+        eval-print-last-sexp
         go-mode-insert-and-indent
+        indent-for-tab-command
         kill-region
         org-beginning-of-line
         org-cycle

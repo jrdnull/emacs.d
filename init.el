@@ -70,6 +70,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -118,6 +120,7 @@
 (use-package projectile
   :config
   (projectile-global-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (use-package helm-projectile
     :config
     (setq projectile-completion-system 'helm)
