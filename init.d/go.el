@@ -24,6 +24,10 @@
                  (go-eldoc-setup))))
   (require 'gotests))
 
+(use-package flycheck-golangci-lint
+  :ensure t
+  :hook (go-mode . flycheck-golangci-lint-setup))
+
 (defun go-open (package)
   "Open a package in your $GOPATH"
   (interactive
