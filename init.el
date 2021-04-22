@@ -70,8 +70,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -146,9 +146,9 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
-(use-package zenburn-theme
-  :config
-  (load-theme 'zenburn t))
+;; (use-package zenburn-theme
+;;   :config
+;;   (load-theme 'zenburn t))
 
 
 (use-package gruvbox-theme
@@ -216,7 +216,7 @@
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Go Mono"
-                    :height 110
+                    :height 155
                     :weight 'normal
                     :width 'normal)
 

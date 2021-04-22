@@ -8,12 +8,12 @@
     :init
     (add-hook 'js2-mode-hook #'add-node-modules-path)))
 
-(use-package company-tern
-  :config
-  (add-to-list 'company-backends 'company-tern)
-  (add-to-list 'tern-command "--no-port-file" 'append)
-  :init
-  (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+;; (use-package company-tern
+;;   :config
+;;   (add-to-list 'company-backends 'company-tern)
+;;   (add-to-list 'tern-command "--no-port-file" 'append)
+;;   :init
+;;   (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
 
 (defun eslint-fix-file ()
   "Run eslint ---fix on buffer."

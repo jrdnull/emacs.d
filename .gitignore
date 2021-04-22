@@ -24,3 +24,4 @@ games
 request/
 network-security.data
 projectile.cache
+.lsp-session*
