@@ -25,3 +25,5 @@ request/
 network-security.data
 projectile.cache
 .lsp-session*
+.cache
+transient
