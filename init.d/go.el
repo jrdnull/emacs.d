@@ -1,3 +1,8 @@
+;; Set up before-save hooks to format buffer and add/delete imports.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
 (use-package go-mode
   :bind (:map go-mode-map
               ("C-c a" . go-test-current-project)
@@ -6,22 +11,18 @@
               ("C-h f" . godoc-at-point))
   :init
   (use-package company-go)
-  (use-package go-eldoc)
   (use-package gotest)
   (use-package go-impl)
   (use-package go-dlv)
-  (use-package go-rename)
-  (use-package go-guru)
+  (use-package lsp-mode)
   :config
   (add-hook 'go-mode-hook
             '(lambda ()
                (progn
-                 (let ((goimports (executable-find "goimports")))
-                   (when goimports (setq gofmt-command goimports)))
-                 (add-hook 'before-save-hook 'gofmt-before-save nil t)
                  (set (make-local-variable 'company-backends) '(company-go))
-                 (subword-mode +1)
-                 (go-eldoc-setup))))
+                 (subword-mode +1))))
+  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
   (require 'gotests))
 
 (use-package flycheck-golangci-lint
