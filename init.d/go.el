@@ -31,7 +31,10 @@
                  (subword-mode +1))))
   (add-hook 'go-mode-hook #'lsp-deferred)
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-  (require 'gotests))
+  (require 'gotests)
+  (use-package dap-mode
+    :init
+    (require 'dap-go)))
 
 
 (defun go-open (package)

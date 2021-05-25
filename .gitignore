@@ -27,3 +27,4 @@ projectile.cache
 .lsp-session*
 .cache
 transient
+.dap-breakpoints
