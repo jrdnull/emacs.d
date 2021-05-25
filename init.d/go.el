@@ -14,7 +14,15 @@
   (use-package gotest)
   (use-package go-impl)
   (use-package go-dlv)
-  (use-package lsp-mode)
+  (use-package lsp-mode
+    :init
+    (use-package lsp-ui
+      :init
+      (add-hook 'lsp-after-initialize-hook (lambda ()
+                                             (flycheck-add-next-checker 'lsp 'golangci-lint)))))
+  (use-package flycheck-golangci-lint
+    :ensure t
+    :hook (go-mode . flycheck-golangci-lint-setup))
   :config
   (add-hook 'go-mode-hook
             '(lambda ()
@@ -25,9 +33,6 @@
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
   (require 'gotests))
 
-(use-package flycheck-golangci-lint
-  :ensure t
-  :hook (go-mode . flycheck-golangci-lint-setup))
 
 (defun go-open (package)
   "Open a package in your $GOPATH"
